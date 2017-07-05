@@ -10,8 +10,15 @@ namespace PerfectBody.ViewModels
     {
         private double _bmi;
         private string _category;
+
+        /// <summary>
+        /// Unit in Kg.
+        /// </summary>
         public double Weight { get; set; }
 
+        /// <summary>
+        /// Unit in meter.
+        /// </summary>
         public double Height { get; set; }
 
         public double Bmi
