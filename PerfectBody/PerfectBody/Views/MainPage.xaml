@@ -17,6 +17,7 @@
         <Entry Text="{Binding Height}"
                FontSize="30"
                TextColor="Navy"/>
+        
         <Label Text="Weight"/>
         <Entry Text="{Binding Weight}"
                TextColor="Navy"
@@ -32,6 +33,7 @@
                FontSize="60"
                TextColor="Navy"
                HorizontalOptions="Center"/>
+        
         <Label Text="{Binding Category}"
                FontSize="40"
                TextColor="Green"
