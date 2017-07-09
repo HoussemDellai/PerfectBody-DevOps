@@ -13,17 +13,17 @@
                  Spacing="40"
                  Margin="30">
 
-        <Label Text="Height"/>
+        <Label Text="Height (meters)"/>
         <Entry Text="{Binding Height}"
                FontSize="30"
                TextColor="Navy"/>
         
-        <Label Text="Weight"/>
+        <Label Text="Weight (kg)"/>
         <Entry Text="{Binding Weight}"
                TextColor="Navy"
                FontSize="30"/>
 
-        <Button Text="Calculate IMC"
+        <Button Text="Calculate BMI"
                 Command="{Binding CalculateImcCommand}"
                 FontSize="30"
                 BackgroundColor="DodgerBlue"

@@ -19,9 +19,11 @@ namespace PerfectBody.UnitTests
             // Act
             vm.CalculateImcCommand.Execute(null);
             double expectedImc = 22.84;
+            var expectedCategory = "Normal weight";
 
             // Assert
             Assert.AreEqual(expectedImc, vm.Bmi, 0.1);
+            Assert.AreEqual(expectedCategory, vm.Category);
         }
 
         [TestMethod]
@@ -37,9 +39,11 @@ namespace PerfectBody.UnitTests
             // Act
             vm.CalculateImcCommand.Execute(null);
             double expectedImc = 44.26;
+            var expectedCategory = "Obesity";
 
             // Assert
             Assert.AreEqual(expectedImc, vm.Bmi, 0.1);
+            Assert.AreEqual(expectedCategory, vm.Category);
         }
     }
 }
