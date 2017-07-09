@@ -8,6 +8,7 @@ namespace PerfectBody.ViewModels
 {
     public class MainViewModel : INotifyPropertyChanged
     {
+
         private double _bmi;
         private string _category;
 
