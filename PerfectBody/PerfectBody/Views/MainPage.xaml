@@ -4,41 +4,78 @@
              xmlns:viewModels="clr-namespace:PerfectBody.ViewModels;assembly=PerfectBody"
              x:Class="PerfectBody.Views.MainPage"
              BackgroundColor="Silver">
- 
+
     <ContentPage.BindingContext>
-        <viewModels:MainViewModel/>
+        <viewModels:MainViewModel />
     </ContentPage.BindingContext>
-    
+
     <StackLayout VerticalOptions="Center"
-                 Spacing="40"
+                 Spacing="20"
                  Margin="30">
 
-        <Label Text="Height (meters)"/>
+        <Label Text="Height (meters)" />
         <Entry Text="{Binding Height}"
                FontSize="30"
-               TextColor="Navy"/>
-        
-        <Label Text="Weight (kg)"/>
+               TextColor="Navy" />
+
+        <Label Text="Weight (kg)" />
         <Entry Text="{Binding Weight}"
                TextColor="Navy"
-               FontSize="30"/>
+               FontSize="30" />
 
         <Button Text="Calculate BMI"
                 Command="{Binding CalculateImcCommand}"
                 FontSize="30"
-                BackgroundColor="DodgerBlue"
-                TextColor="White"/>
-        
+                BackgroundColor="Navy"
+                TextColor="White" />
+
         <Label Text="{Binding Bmi, StringFormat='BMI : {0:N}'}"
-               FontSize="60"
+               FontSize="56"
                TextColor="Navy"
-               HorizontalOptions="Center"/>
-        
-        <Label Text="{Binding Category}"
+               HorizontalOptions="Center" />
+
+        <!--<Label Text="{Binding Category}"
                FontSize="40"
                TextColor="Green"
-               HorizontalOptions="Center"/>
+               HorizontalOptions="Center"/>-->
+
+        <Grid HeightRequest="200"
+              WidthRequest="400"
+              BackgroundColor="Gray">
+            
+            <Label Text="{Binding Category}"
+                   FontSize="40"
+                   TextColor="White"
+                   HorizontalOptions="Center" />
+
+            <Grid.Triggers>
+                <DataTrigger TargetType="Grid"
+                             Binding="{Binding Category}"
+                             Value="Underweight">
+                    <Setter Property="BackgroundColor"
+                            Value="Yellow" />
+                </DataTrigger>
+                <DataTrigger TargetType="Grid"
+                             Binding="{Binding Category}"
+                             Value="Normal weight">
+                    <Setter Property="BackgroundColor"
+                            Value="Green" />
+                </DataTrigger>
+                <DataTrigger TargetType="Grid"
+                             Binding="{Binding Category}"
+                             Value="Overweight">
+                    <Setter Property="BackgroundColor"
+                            Value="Blue" />
+                </DataTrigger>
+                <DataTrigger TargetType="Grid"
+                             Binding="{Binding Category}"
+                             Value="Obesity">
+                    <Setter Property="BackgroundColor"
+                            Value="Red" />
+                </DataTrigger>
+            </Grid.Triggers>
+        </Grid>
 
     </StackLayout>
-    
+
 </ContentPage>
