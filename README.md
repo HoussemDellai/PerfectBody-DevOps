@@ -6,7 +6,7 @@ Build status in VSTS <img src="https://houssemdellai.visualstudio.com/_apis/publ
 Build status in VS Mobile Center <img src="https://build.mobile.azure.com/v0.1/apps/9ae2f3a9-7212-448e-a40a-4382f1732c3f/branches/master/badge"/>
 
 
-Learn how to create a CI pipeline to build Xamarin.Android app in VSTS:
+Learn how to create a CI pipeline to build Xamarin.Android app in VSTS:</br>
 https://www.youtube.com/playlist?list=PLpbcUe4chE7-gl1ywCEOSx41sp6DTZqvM
 
 <a href="https://www.youtube.com/playlist?list=PLpbcUe4chE7-gl1ywCEOSx41sp6DTZqvM">
