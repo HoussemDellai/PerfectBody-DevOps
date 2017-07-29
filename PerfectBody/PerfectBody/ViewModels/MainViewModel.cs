@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
+using Microsoft.Azure.Mobile.Analytics;
 using Xamarin.Forms;
 
 namespace PerfectBody.ViewModels
@@ -57,6 +59,13 @@ namespace PerfectBody.ViewModels
                         Category = "Overweight";
                     else if (30 <= Bmi)
                         Category = "Obesity";
+
+                    Analytics.TrackEvent("Button clicked", new Dictionary<string, string> {
+                        { "Height", Height.ToString() },
+                        { "Weight", Weight.ToString() },
+                        { "BMI", Bmi.ToString() },
+                        { "Category", Category }
+                    });
                 });
             }
         }
@@ -65,6 +74,8 @@ namespace PerfectBody.ViewModels
         {
             Height = 1.7;
             Weight = 66;
+
+            Analytics.TrackEvent("Opened MainPage");
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
