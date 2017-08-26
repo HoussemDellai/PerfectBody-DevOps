@@ -53,18 +53,18 @@ namespace PerfectBody.ViewModels
 
                     if (Bmi <= 18.5)
                         Category = "Underweight";
-                    else if (18.5 <= Bmi && Bmi <= 24.9)
+                    else if (18.5 <= Bmi && Bmi < 25)
                         Category = "Normal weight";
-                    else if (25 <= Bmi && Bmi <= 29.9)
+                    else if (25 <= Bmi && Bmi < 30)
                         Category = "Overweight";
                     else if (30 <= Bmi)
                         Category = "Obesity";
 
-                    Analytics.TrackEvent("Button clicked", new Dictionary<string, string> {
-                        { "Height", Height.ToString() },
+                    Analytics.TrackEvent("Bmi button clicked", new Dictionary<string, string> {
                         { "Weight", Weight.ToString() },
+                        { "Height", Height.ToString() },
                         { "BMI", Bmi.ToString() },
-                        { "Category", Category }
+                        { "Category", Category },
                     });
                 });
             }
@@ -74,8 +74,6 @@ namespace PerfectBody.ViewModels
         {
             Height = 1.7;
             Weight = 66;
-
-            Analytics.TrackEvent("Opened MainPage");
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

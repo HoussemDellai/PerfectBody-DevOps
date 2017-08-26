@@ -15,24 +15,28 @@
 
         <Label Text="Height (meters)" />
         <Entry Text="{Binding Height}"
-               FontSize="30"
-               TextColor="Navy" />
+               FontSize="30" 
+               TextColor="Navy"
+               AutomationId="EntryHeight"/>
 
         <Label Text="Weight (kg)" />
         <Entry Text="{Binding Weight}"
                TextColor="Navy"
-               FontSize="30" />
+               FontSize="30"
+               AutomationId="EntryWeight"/>
 
         <Button Text="Calculate BMI"
                 Command="{Binding CalculateImcCommand}"
                 FontSize="30"
                 BackgroundColor="Navy"
-                TextColor="White" />
+                TextColor="White"
+                AutomationId="ButtonCalculateBmi"/>
 
         <Label Text="{Binding Bmi, StringFormat='BMI : {0:N}'}"
                FontSize="56"
                TextColor="Navy"
-               HorizontalOptions="Center" />
+               HorizontalOptions="Center"
+               AutomationId="LabelBmi"/>
 
         <!--<Label Text="{Binding Category}"
                FontSize="40"
@@ -41,12 +45,14 @@
 
         <Grid HeightRequest="200"
               WidthRequest="400"
-              BackgroundColor="Gray">
+              BackgroundColor="Gray"
+              AutomationId="GridBmi">
 
             <Label Text="{Binding Category}"
                    FontSize="40"
                    TextColor="White"
-                   HorizontalOptions="Center" />
+                   HorizontalOptions="Center"
+                   AutomationId="LabelBmiCategory"/>
 
             <Grid.Triggers>
                 <DataTrigger TargetType="Grid"

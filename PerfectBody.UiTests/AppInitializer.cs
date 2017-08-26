@@ -1,8 +1,4 @@
-﻿using System;
-using System.IO;
-using System.Linq;
-using Xamarin.UITest;
-using Xamarin.UITest.Queries;
+﻿using Xamarin.UITest;
 
 namespace PerfectBody.UiTests
 {
@@ -14,6 +10,7 @@ namespace PerfectBody.UiTests
             {
                 return ConfigureApp
                     .Android
+                    .ApkFile(@"C:\Users\Houssem\Desktop\PerfectBody\PerfectBody\PerfectBody.Android\bin\Release\Perfect_Body.Perfect_Body.apk")
                     .StartApp();
             }
 

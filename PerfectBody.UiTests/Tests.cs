@@ -1,14 +1,12 @@
 ﻿using System;
-using System.IO;
 using System.Linq;
 using NUnit.Framework;
 using Xamarin.UITest;
-using Xamarin.UITest.Queries;
 
 namespace PerfectBody.UiTests
 {
     [TestFixture(Platform.Android)]
-    [TestFixture(Platform.iOS)]
+    //[TestFixture(Platform.iOS)]
     public class Tests
     {
         IApp app;
@@ -29,6 +27,28 @@ namespace PerfectBody.UiTests
         public void AppLaunches()
         {
             app.Screenshot("First screen.");
+        }
+
+        [Test]
+        [Category("UI Tests")]
+        public void Weight66_Height170_Return22()
+        {
+            // Arrange
+            app.EnterText("EntryHeight", "66");
+            app.EnterText("EntryWeight", "1.70");
+
+            var labelBmi = app.Query("LabelBmi").FirstOrDefault();
+            var labelBmiCategory = app.Query("LabelBmiCategory").FirstOrDefault();
+
+            double expectedImc = 22.84;
+            var expectedCategory = "Normal weight";
+
+            // Act
+            app.Tap("ButtonCalculateBmi");
+
+            // Assert
+            Assert.AreEqual(expectedImc, Convert.ToDouble(labelBmi?.Text), 0.1);
+            Assert.AreEqual(expectedCategory, labelBmiCategory?.Text);
         }
     }
 }
