@@ -1,7 +1,24 @@
 # PerfectBody-DevOps
 Sample app for demoing DevOps with VSTS
 
-Build status in VSTS <img src="https://houssemdellai.visualstudio.com/_apis/public/build/definitions/dfec64f9-d8b1-4993-a40a-86aefbb843c1/17/badge"/>
+<table>
+  <tr>
+    <td>Build status in VSTS</td>
+    <td><img src="https://houssemdellai.visualstudio.com/_apis/public/build/definitions/dfec64f9-d8b1-4993-a40a-86aefbb843c1/17/badge"/></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+  </tr>
+ 
 
 Build status in VS Mobile Center <img src="https://build.mobile.azure.com/v0.1/apps/9ae2f3a9-7212-448e-a40a-4382f1732c3f/branches/master/badge"/>
 
