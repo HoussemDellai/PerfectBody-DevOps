@@ -22,7 +22,7 @@ Sample app for demoing DevOps with VSTS
   
   </table>
  
-Security status in SonarCloud (just another badge)<br/>
+Quality Gate status in SonarCloud (just another badge)<br/>
 <img src="https://sonarcloud.io/api/project_badges/quality_gate?project=Xamarin-Android-App-CI-VSTS"/>
 
 
