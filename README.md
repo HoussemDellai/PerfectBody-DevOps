@@ -2,6 +2,10 @@
 Sample app for demoing DevOps with VSTS
 
 <table>
+    <tr>
+    <td>Build status in VSTS (Xamarin-Android-App-CI)</td>
+    <td><img src="https://houssemdellai.visualstudio.com/_apis/public/build/definitions/fb7f25b7-f79a-44dd-bd3d-e8886f486a47/45/badge"/></td>
+  </tr>
   <tr>
     <td>Build status in VSTS</td>
     <td><img src="https://houssemdellai.visualstudio.com/_apis/public/build/definitions/dfec64f9-d8b1-4993-a40a-86aefbb843c1/17/badge"/></td>
