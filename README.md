@@ -10,7 +10,7 @@ Build status in SonarCloud <img src="https://sonarcloud.io/api/project_badges/me
 Quality Gate status in SonarCloud (just another badge) <br/>
 <img src="https://sonarcloud.io/api/project_badges/measure?project=Xamarin-Android-App-CI-VSTS&metric=security_rating"/>
 
-Security status in SonarCloud (just another badge) <br/>
+Security status in SonarCloud (just another badge)
 <img src="https://sonarcloud.io/api/project_badges/quality_gate?project=Xamarin-Android-App-CI-VSTS"/>
 
 
