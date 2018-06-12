@@ -7,7 +7,12 @@ Build status in VS Mobile Center <img src="https://build.mobile.azure.com/v0.1/a
 
 Build status in SonarCloud <img src="https://sonarcloud.io/api/project_badges/measure?project=Xamarin-Android-App-CI-VSTS&metric=alert_status"/>
 
-Build status in SonarCloud (just another badge) <img src="https://sonarcloud.io/api/project_badges/quality_gate?project=Xamarin-Android-App-CI-VSTS"/>
+Quality Gate status in SonarCloud (just another badge) <br/>
+<img src="https://sonarcloud.io/api/project_badges/measure?project=Xamarin-Android-App-CI-VSTS&metric=security_rating"/>
+
+Security status in SonarCloud (just another badge) <br/>
+<img src="https://sonarcloud.io/api/project_badges/quality_gate?project=Xamarin-Android-App-CI-VSTS"/>
+
 
 
 Learn how to create a CI pipeline to build Xamarin.Android app in VSTS:</br>
