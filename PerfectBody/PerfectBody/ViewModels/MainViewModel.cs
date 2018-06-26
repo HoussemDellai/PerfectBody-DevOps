@@ -72,7 +72,7 @@ namespace PerfectBody.ViewModels
 
         public MainViewModel()
         {
-            Height = 1.7;
+            Height = 1.8;
             Weight = 66;
         }
 
