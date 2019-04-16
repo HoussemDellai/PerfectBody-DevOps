@@ -1,0 +1,97 @@
+pool:
+  name: Hosted VS2017
+  demands:
+  - MSBuild
+  - Xamarin.Android
+  - msbuild
+  - vstest
+  - java
+  - JDK
+
+variables:
+  BuildConfiguration: 'Release'
+  Parameters.restorePkgSolution: '**\*.sln'
+  Parameters.appFiles: '$(build.binariesdirectory)/$(BuildConfiguration)/*.apk'
+
+steps:
+- task: NuGetToolInstaller@0
+  displayName: 'Use NuGet 4.4.1'
+  inputs:
+    versionSpec: 4.4.1
+
+- task: NuGetCommand@2
+  displayName: 'NuGet restore'
+  inputs:
+    restoreSolution: '$(Parameters.restorePkgSolution)'
+
+- task: SonarSource.sonarcloud.14d9cde6-c1da-4d55-aa01-2965cd301255.SonarCloudPrepare@1
+  displayName: 'Prepare analysis on SonarCloud'
+  inputs:
+    SonarCloud: SonarCloudConnection
+    organization: houssemdellai
+    projectKey: 'Xamarin-Android-App-CI-VSTS'
+
+- task: XamarinAndroid@1
+  displayName: 'Build Xamarin.Android project'
+  inputs:
+    projectFile: '**/*Droid*.csproj'
+    outputDirectory: '$(build.binariesdirectory)/$(BuildConfiguration)'
+    configuration: '$(BuildConfiguration)'
+
+- task: MSBuild@1
+  displayName: 'Build UnitTests'
+  inputs:
+    solution: PerfectBody.UnitTests/PerfectBody.UnitTests.csproj
+    configuration: '$(BuildConfiguration)'
+    msbuildArguments: '/p:OutputPath="$(build.binariesdirectory)/$(BuildConfiguration)/test-assembly"'
+
+- task: VSTest@2
+  displayName: 'VsTest - testAssemblies'
+  inputs:
+    searchFolder: '$(build.binariesdirectory)/$(BuildConfiguration)/test-assembly'
+    runInParallel: false
+    codeCoverageEnabled: true
+
+- task: PublishTestResults@2
+  displayName: 'Publish Test Results **\TEST-*.xml'
+  inputs:
+    testResultsFormat: VSTest
+    testResultsFiles: '**\TEST-*.xml'
+    searchFolder: '$(build.binariesdirectory)/$(BuildConfiguration)/test-assembly'
+
+- task: SonarSource.sonarcloud.ce096e50-6155-4de8-8800-4221aaeed4a1.SonarCloudAnalyze@1
+  displayName: 'Run Code Analysis'
+
+- task: SonarSource.sonarcloud.38b27399-a642-40af-bb7d-9971f69712e8.SonarCloudPublish@1
+  displayName: 'Publish Quality Gate Result'
+  continueOnError: true
+
+- task: AndroidSigning@2
+  displayName: 'Signing and aligning APK'
+  inputs:
+    apkFiles: '$(Parameters.appFiles)'
+    jarsignerKeystoreFile: '295e9c4e-9fd4-4376-853d-7e1c31cd6f66'
+    jarsignerKeystorePassword: '$(Keystore.Password)'
+    jarsignerKeystoreAlias: '$(Keystore.Alias)'
+    jarsignerKeyPassword: '$(Keystore.Password)'
+    zipalign: false
+
+- task: CopyFiles@2
+  displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
+  inputs:
+    SourceFolder: '$(build.binariesdirectory)/$(BuildConfiguration)'
+    Contents: '*.apk'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact: drop'
+
+- task: AppCenterDistribute@0
+  displayName: 'Deploy apk to Collaborators using App Center'
+  inputs:
+    serverEndpoint: AppCenterconnection
+    appSlug: 'HoussemDellai/PerfectBody-Deploy-from-VSTS-CI'
+    appFile: '$(Parameters.appFiles)'
+    symbolsIncludeParentDirectory: false
+    releaseNotesInput: 'Newer version is available'
+
