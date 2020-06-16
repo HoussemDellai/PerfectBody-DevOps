@@ -21,8 +21,10 @@ steps:
     feedsToUse: 'select'
  - task: XamarinAndroid@1
    inputs:
-    projectFile: 'PerfectBody/PerfectBody.Android/PerfectBody.Android.csproj'
-    jdkOption: 'JDKVersion'
+     projectFile: 'PerfectBody/PerfectBody.Android/PerfectBody.Android.csproj'
+     outputDirectory: '$(build.binariesdirectory)/$(BuildConfiguration)'
+     configuration: '$(BuildConfiguration)'
+     jdkOption: 'JDKVersion'
 
  - task: MSBuild@1
    inputs:
