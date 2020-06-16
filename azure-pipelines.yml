@@ -1,0 +1,34 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+ - task: NuGetToolInstaller@1
+   inputs:
+     versionSpec: 4.4.1
+
+ - task: NuGetCommand@2
+   inputs:
+    command: 'restore'
+    restoreSolution: '**/*.sln'
+    feedsToUse: 'select'
+ - task: XamarinAndroid@1
+   inputs:
+    projectFile: 'PerfectBody/PerfectBody.Android/PerfectBody.Android.csproj'
+    jdkOption: 'JDKVersion'
+
+ - task: MSBuild@1
+   inputs:
+      solution: 'PerfectBody.UnitTests/PerfectBody.UnitTests.csproj'
+ - task: PublishBuildArtifacts@1
+   inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
