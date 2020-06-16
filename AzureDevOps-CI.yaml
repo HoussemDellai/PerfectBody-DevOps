@@ -24,12 +24,7 @@ steps:
   inputs:
     restoreSolution: '$(Parameters.restorePkgSolution)'
 
-- task: SonarSource.sonarcloud.14d9cde6-c1da-4d55-aa01-2965cd301255.SonarCloudPrepare@1
-  displayName: 'Prepare analysis on SonarCloud'
-  inputs:
-    SonarCloud: SonarCloudConnection
-    organization: houssemdellai
-    projectKey: 'Xamarin-Android-App-CI-VSTS'
+
 
 - task: XamarinAndroid@1
   displayName: 'Build Xamarin.Android project'
@@ -58,13 +53,6 @@ steps:
     testResultsFormat: VSTest
     testResultsFiles: '**\TEST-*.xml'
     searchFolder: '$(build.binariesdirectory)/$(BuildConfiguration)/test-assembly'
-
-- task: SonarSource.sonarcloud.ce096e50-6155-4de8-8800-4221aaeed4a1.SonarCloudAnalyze@1
-  displayName: 'Run Code Analysis'
-
-- task: SonarSource.sonarcloud.38b27399-a642-40af-bb7d-9971f69712e8.SonarCloudPublish@1
-  displayName: 'Publish Quality Gate Result'
-  continueOnError: true
 
 - task: AndroidSigning@2
   displayName: 'Signing and aligning APK'
